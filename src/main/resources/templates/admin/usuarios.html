@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuários · Mercado Express</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/mercado.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<main class="container">
+    <div class="pagina-topo">
+        <div>
+            <span class="selo selo--admin">Área do administrador</span>
+            <h1>Usuários</h1>
+        </div>
+    </div>
+
+    <p class="aviso aviso--sucesso" th:if="${sucesso}" th:text="${sucesso}"></p>
+    <p class="aviso aviso--erro" th:if="${erro}" th:text="${erro}"></p>
+
+    <table class="tabela">
+        <thead>
+        <tr>
+            <th>Usuário</th><th>Perfil</th><th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td>
+                <span th:text="${usuario.username}"></span>
+                <span class="texto-suave" th:if="${usuario.username == usuarioLogado}">(você)</span>
+            </td>
+            <td>
+                <span th:if="${usuario.perfil.name() == 'ADMIN'}" class="selo selo--admin">Admin</span>
+                <span th:if="${usuario.perfil.name() == 'USER'}" class="selo selo--user">Usuário</span>
+            </td>
+            <td class="tabela__acoes">
+                <th:block th:if="${usuario.username != usuarioLogado}">
+                    <form th:action="@{/admin/usuarios/{id}/perfil(id=${usuario.id})}" method="post" class="form-inline">
+                        <input type="hidden" name="perfil" th:value="${usuario.perfil.name() == 'ADMIN'} ? 'USER' : 'ADMIN'">
+                        <button type="submit" class="link-acao"
+                                th:text="${usuario.perfil.name() == 'ADMIN'} ? 'Tornar usuário' : 'Tornar admin'"></button>
+                    </form>
+                    <form th:action="@{/admin/usuarios/{id}/excluir(id=${usuario.id})}" method="post" class="form-inline">
+                        <button type="submit" class="link-acao link-acao--perigo"
+                                onclick="return confirm('Excluir este usuário?')">Excluir</button>
+                    </form>
+                </th:block>
+                <span th:if="${usuario.username == usuarioLogado}" class="texto-suave">—</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<header th:fragment="cabecalho" class="cabecalho">
+    <div>
+        <span class="cabecalho__logo">Mercado Express</span>
+        <span class="cabecalho__subtitulo">gestão de produtos</span>
+    </div>
+    <nav class="cabecalho__nav">
+        <a sec:authorize="isAuthenticated()" th:href="@{/mercados}">Produtos</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/usuarios}">Usuários</a>
+
+        <span sec:authorize="isAuthenticated()" class="cabecalho__usuario">
+            <span sec:authentication="name"></span>
+            <span sec:authorize="hasRole('ADMIN')" class="selo selo--admin">Admin</span>
+            <span sec:authorize="hasRole('USER')" class="selo selo--user">Usuário</span>
+        </span>
+
+        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" class="form-inline">
+            <button type="submit" class="link-nav">Sair</button>
+        </form>
+        <a sec:authorize="isAnonymous()" th:href="@{/login}">Entrar</a>
+    </nav>
+</header>
+</body>
+</html>

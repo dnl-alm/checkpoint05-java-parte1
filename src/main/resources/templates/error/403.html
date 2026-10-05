@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Acesso negado · Mercado Express</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/mercado.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<main class="container container--estreito">
+    <div class="ficha ficha--centro">
+        <span class="selo selo--negado">403</span>
+        <h1>Acesso negado</h1>
+        <p class="texto-suave">Esta área é restrita a administradores. Se você precisa desse acesso, peça a um administrador para alterar o seu perfil.</p>
+        <a th:href="@{/mercados}" class="botao botao--primario">Voltar aos produtos</a>
+    </div>
+</main>
+
+</body>
+</html>
