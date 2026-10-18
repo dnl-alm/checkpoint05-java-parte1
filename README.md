@@ -12,6 +12,9 @@ Este checkpoint evolui o projeto construído nas entregas anteriores. As princip
 
 **IDE utilizada:** IntelliJ IDEA
 
+## Link Render
+`https://checkpoint05-java-parte1.onrender.com`
+
 ## Sumário
 
 - [O que foi feito neste checkpoint](#o-que-foi-feito-neste-checkpoint)
