@@ -379,24 +379,6 @@ Formulário aberto pelo link "Editar", já preenchido com os dados atuais do pro
 
 Ao clicar em "Excluir", o navegador pede confirmação. Confirmando, o produto é removido do banco e some da listagem.
 
-### 8. Área do administrador
-
-![Usuários](docs/images/08_admin_usuarios.png)
-
-Lista todos os usuários da tabela `TDS_TB_05_usuarios_mercado` com o seu perfil. O administrador pode promover um usuário a admin, rebaixá-lo ou excluí-lo. A própria conta aparece marcada como "(você)", sem ações.
-
-### 9. Acesso negado
-
-![Acesso negado](docs/images/09_acesso_negado.png)
-
-Página exibida quando um `USER` tenta abrir uma área restrita digitando o endereço diretamente, como `/admin/usuarios`.
-
-### 10. Tabelas no banco
-
-![Banco de dados](docs/images/10_banco_tabelas.png)
-
-As tabelas `TDS_TB_05_mercado` e `TDS_TB_05_usuarios_mercado` no SQL Developer. A coluna `SENHA` guarda apenas o hash BCrypt, nunca a senha original.
-
 ## Roteiro de teste
 
 Para comparar os dois perfis lado a lado, use duas janelas de navegador (uma normal e uma anônima), cada uma logada com um perfil.
